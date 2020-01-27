@@ -1,8 +1,11 @@
+com\jonathan\sgrouter\busStopDistComparator.class
 com\jonathan\sgrouter\Edge.class
-com\jonathan\sgrouter\Route.class
 com\jonathan\sgrouter\NodeDist.class
 com\jonathan\sgrouter\SGRouter.class
 com\jonathan\sgrouter\SpringbootApplication.class
 com\jonathan\sgrouter\MultiThreadDijkstra.class
-com\jonathan\sgrouter\nodeDistComparator.class
 com\jonathan\sgrouter\routeWeightComparator.class
+com\jonathan\sgrouter\Route.class
+com\jonathan\sgrouter\busDistComparator.class
+com\jonathan\sgrouter\BusStopDetails.class
+com\jonathan\sgrouter\nodeDistComparator.class

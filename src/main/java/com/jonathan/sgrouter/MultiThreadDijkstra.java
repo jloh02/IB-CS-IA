@@ -33,7 +33,7 @@ class MultiThreadDijkstra implements Runnable {
 
         pq.add(new Route(startList, startTime, startServ));
 
-        while (pq.size() > 0 && tempPathToDest < kShortest) /// AND NUMBER OF PATHS < K (3 for routing, 1 for calc)
+        while (pq.size() > 0 && tempPathToDest < kShortest) /// AND NUMBER OF PATHS < 3
         {
             Route curr = pq.poll(); // Current vertex
 

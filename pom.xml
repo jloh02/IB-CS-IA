@@ -91,9 +91,9 @@
         <artifactId>appengine-maven-plugin</artifactId>
         <version>2.2.0</version>
         <configuration>
-            <version>sgrouter-helloworld</version>
+            <version>2019-01-10</version>
             <deploy.projectId>cs-ia-258513</deploy.projectId>
-            <deploy.version>1.0.1</deploy.version>
+            <deploy.version>1.0.2</deploy.version>
         </configuration>
       </plugin>
     </plugins>
