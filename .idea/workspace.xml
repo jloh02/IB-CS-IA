@@ -2,27 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90043ca5-7d81-485f-ac21-ac18b129c54c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/BusStopDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/logging.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/appengine/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/appengine/app.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/MultiThreadDijkstra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/MultiThreadDijkstra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/Route.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/SGRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/SGRouter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/SpringbootApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/SpringbootApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SgPublicTransportRouter-1.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/SgPublicTransportRouter-1.0.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SgPublicTransportRouter-1.0.0-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/SgPublicTransportRouter-1.0.0-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/SgPublicTransportRouter-1.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/appengine-staging/SgPublicTransportRouter-1.0.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/target/appengine-staging/app.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/jonathan/sgrouter/Route.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jonathan/sgrouter/Route.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/jonathan/sgrouter/SGRouter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jonathan/sgrouter/SGRouter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/jonathan/sgrouter/SpringbootApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jonathan/sgrouter/SpringbootApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/jonathan/sgrouter/routeWeightComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jonathan/sgrouter/routeWeightComparator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -55,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/SpringbootApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="66" column="31" selection-start-line="66" selection-start-column="31" selection-end-line="66" selection-end-column="31" />
+            <state relative-caret-position="156">
+              <caret line="44" column="29" lean-forward="true" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -70,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/Route.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-111">
-              <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
+            <state relative-caret-position="393">
+              <caret line="76" column="36" lean-forward="true" selection-start-line="76" selection-start-column="36" selection-end-line="76" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -82,8 +63,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/SGRouter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1703">
-              <caret line="88" column="39" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="39" />
+            <state relative-caret-position="285">
+              <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -91,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/MultiThreadDijkstra.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+            <state relative-caret-position="335">
+              <caret line="64" column="33" lean-forward="true" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -148,8 +129,8 @@
       <find>edges</find>
       <find>Route</find>
       <find>.equal</find>
-      <find>outputPaths</find>
       <find>tempPathToDest</find>
+      <find>outputPaths</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -173,9 +154,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/BusStop.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/BusStopDetails.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/SGRouter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/MultiThreadDijkstra.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/Route.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/SpringbootApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/MultiThreadDijkstra.java" />
       </list>
     </option>
   </component>
@@ -284,19 +265,35 @@
       <option name="presentableId" value="Default" />
       <updated>1574133337970</updated>
     </task>
+    <task id="LOCAL-00001" summary="checkpoint 27/1">
+      <created>1580129262342</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1580129262343</updated>
+    </task>
+    <task id="LOCAL-00002" summary="compressed path to check for duplicate routes">
+      <created>1580129677071</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1580129677071</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26979867" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26979867" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" weight="0.32916668" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -324,6 +321,9 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
     </ignored-roots>
+    <MESSAGE value="checkpoint 27/1" />
+    <MESSAGE value="compressed path to check for duplicate routes" />
+    <option name="LAST_COMMIT_MESSAGE" value="compressed path to check for duplicate routes" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/springboot-helloworld-j11.iml" />
@@ -415,10 +415,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/SpringbootApplication.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/MultiThreadDijkstra.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="66" column="31" selection-start-line="66" selection-start-column="31" selection-end-line="66" selection-end-column="31" />
+        <state relative-caret-position="335">
+          <caret line="64" column="33" lean-forward="true" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-12.0.1/lib/src.zip!/java.base/java/util/AbstractCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="463" column="18" selection-start-line="463" selection-start-column="18" selection-end-line="463" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/SGRouter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -427,28 +441,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/Route.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-111">
-          <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
+        <state relative-caret-position="393">
+          <caret line="76" column="36" lean-forward="true" selection-start-line="76" selection-start-column="36" selection-end-line="76" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/SGRouter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/SpringbootApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1703">
-          <caret line="88" column="39" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="39" />
+        <state relative-caret-position="156">
+          <caret line="44" column="29" lean-forward="true" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/MultiThreadDijkstra.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
         </state>
       </provider>
     </entry>

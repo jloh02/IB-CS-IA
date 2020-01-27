@@ -36,9 +36,9 @@ public class SpringbootApplication {
     }
 
     @GetMapping("/route")
-    public String route(@RequestParam("startLat") double startLat, @RequestParam("startLon") double startLon, @RequestParam("endLat") double endLat, @RequestParam("endLon") double endLon) {
+    public String route(@RequestParam("startLat") double startLat, @RequestParam("startLon") double startLon, @RequestParam("endLat") double endLat, @RequestParam("endLon") double endLon,@RequestParam("maxWalkKm") double maxWalkKm) {
         System.out.println(Calendar.getInstance(TimeZone.getTimeZone("GMT+8")).toString());
-        List<Route> allRoutes = router.route(startLat, startLon, endLat, endLon, 0.3);
+        List<Route> allRoutes = router.route(startLat, startLon, endLat, endLon, maxWalkKm);
         ArrayList<Route> output = new ArrayList<>();
         for (Route i : allRoutes) {
             boolean repeated = false;
