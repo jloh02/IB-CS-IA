@@ -8,6 +8,7 @@ import java.util.Comparator;
 class Route {
     ArrayList<String> path, service;
     ArrayList<Double> weightPath;
+    ArrayList<Integer> numStop;
 
     Route(ArrayList<String> a, ArrayList<Double> b, ArrayList<String> s) {
         this.path = new ArrayList<>(a);
@@ -19,7 +20,7 @@ class Route {
         return (service.charAt(0) >= 'A' && service.charAt(0) <= 'z' && !service.contains("CT") && !service.contains("BPS"));
     }
 
-    public String toString() {
+    void compressPath(){
         ArrayList<String> outPath = new ArrayList<>(), outService = new ArrayList<>();
         ArrayList<Double> outWeight = new ArrayList<>();
         ArrayList<Integer> outNumStop = new ArrayList<>();
@@ -48,19 +49,26 @@ class Route {
             prevServ = this.service.get(i);
         }
 
+        this.path = outPath;
+        this.service = outService;
+        this.numStop = outNumStop;
+        this.weightPath = outWeight;
+    }
+
+    public String toString() { //NOTE! CALL COMPRESS PATH BEFORE CALLING TO STRING
         String pathStr, serviceStr;
         pathStr = serviceStr = "[";
-        for (int i = 0; i < outPath.size(); i++) {
-            pathStr += "\"" + outPath.get(i) + "\"";
-            serviceStr += "\"" + outService.get(i) + "\"";
-            if (i != outPath.size() - 1) {
+        for (int i = 0; i < this.path.size(); i++) {
+            pathStr += "\"" + this.path.get(i) + "\"";
+            serviceStr += "\"" + this.service.get(i) + "\"";
+            if (i != this.path.size() - 1) {
                 pathStr += ",";
                 serviceStr += ",";
             }
         }
         pathStr += "]";
         serviceStr += "]";
-        return String.format("{\"path\":%s,\"weight\":%s,\"service\":%s,\"stops\":%s}", pathStr, outWeight.toString(), serviceStr, outNumStop.toString());
+        return String.format("{\"path\":%s,\"weight\":%s,\"service\":%s,\"stops\":%s}", pathStr, this.weightPath.toString(), serviceStr, this.numStop.toString());
     }
 }
 

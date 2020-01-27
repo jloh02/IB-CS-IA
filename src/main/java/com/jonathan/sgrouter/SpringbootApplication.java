@@ -42,6 +42,7 @@ public class SpringbootApplication {
         ArrayList<Route> output = new ArrayList<>();
         for (Route i : allRoutes) {
             boolean repeated = false;
+            i.compressPath();
             for (Route j : output) {
                 if (i.service.equals(j.service)) repeated = true;
             }
