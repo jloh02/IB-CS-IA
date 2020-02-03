@@ -31,8 +31,8 @@ public class SpringbootApplication {
     }
 
     @GetMapping("/")
-    public String home() {
-        return "Root";
+    public boolean home() {
+        return true;
     }
 
     @GetMapping("/route")
