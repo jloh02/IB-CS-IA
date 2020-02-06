@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="90043ca5-7d81-485f-ac21-ac18b129c54c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/SpringbootApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/SpringbootApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SgPublicTransportRouter-1.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/SgPublicTransportRouter-1.0.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SgPublicTransportRouter-1.0.0-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/SgPublicTransportRouter-1.0.0-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/SgPublicTransportRouter-1.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/appengine-staging/SgPublicTransportRouter-1.0.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/jonathan/sgrouter/Route.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jonathan/sgrouter/Route.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/jonathan/sgrouter/SpringbootApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jonathan/sgrouter/SpringbootApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/jonathan/sgrouter/routeWeightComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jonathan/sgrouter/routeWeightComparator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/appengine/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/appengine/app.yaml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -24,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/appengine/app.yaml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="5" column="90" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="90" />
+              <caret line="5" column="43" lean-forward="true" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -45,7 +39,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/SpringbootApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
+            <state relative-caret-position="504">
               <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -78,7 +72,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/MultiThreadDijkstra.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="308">
@@ -90,7 +84,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/SGPublicTransportData.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
+            <state relative-caret-position="127176">
               <caret column="6056326" selection-start-column="6056201" selection-end-column="6056326" />
             </state>
           </provider>
@@ -155,7 +149,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/NodeDist.java" />
         <option value="$PROJECT_DIR$/src/main/resources/logging.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/appengine/app.yaml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/BusStop.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/BusStopDetails.java" />
@@ -163,6 +156,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/MultiThreadDijkstra.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/Route.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/SpringbootApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/appengine/app.yaml" />
       </list>
     </option>
   </component>
@@ -292,14 +286,21 @@
       <option name="project" value="LOCAL" />
       <updated>1580129995865</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added server ping">
+      <created>1580728979375</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1580728979375</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27785236" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2818792" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -337,7 +338,8 @@
     <MESSAGE value="checkpoint 27/1" />
     <MESSAGE value="compressed path to check for duplicate routes" />
     <MESSAGE value="maxWalkKm implemented as argument" />
-    <option name="LAST_COMMIT_MESSAGE" value="maxWalkKm implemented as argument" />
+    <MESSAGE value="Added server ping" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added server ping" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/springboot-helloworld-j11.iml" />
@@ -415,10 +417,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/appengine/app.yaml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/SpringbootApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="90" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="90" />
+        <state relative-caret-position="504">
+          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -426,30 +431,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1533">
           <caret line="76" column="36" selection-start-line="76" selection-start-column="36" selection-end-line="76" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/SGPublicTransportData.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret column="6056326" selection-start-column="6056201" selection-end-column="6056326" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="617">
-          <caret line="84" column="26" selection-start-line="84" selection-start-column="26" selection-end-line="84" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/SpringbootApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -466,10 +447,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/SGPublicTransportData.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127176">
+          <caret column="6056326" selection-start-column="6056201" selection-end-column="6056326" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jonathan/sgrouter/MultiThreadDijkstra.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="617">
+          <caret line="84" column="26" selection-start-line="84" selection-start-column="26" selection-end-line="84" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/appengine/app.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="43" lean-forward="true" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
         </state>
       </provider>
     </entry>

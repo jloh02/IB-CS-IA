@@ -224,9 +224,9 @@ class SGRouter {
             double lonNode = mrtAdjList.getJSONObject(x).getDouble("lon");
             double latNode = mrtAdjList.getJSONObject(x).getDouble("lat");
             double distFromStart = calc_dist(lonNode, latNode, startLon, startLat);
-            if (abs(distFromStart) <= 0.3) nearbyStart.add(new NodeDist(x, distFromStart));
+            if (abs(distFromStart) <= maxWalkKm) nearbyStart.add(new NodeDist(x, distFromStart));
             double distFromEnd = calc_dist(lonNode, latNode, endLon, endLat);
-            if (abs(distFromEnd) <= 0.3) nearbyEnd.add(new NodeDist(x, distFromEnd));
+            if (abs(distFromEnd) <= maxWalkKm) nearbyEnd.add(new NodeDist(x, distFromEnd));
         }
         JSONArray interchanges = jObj.getJSONArray("interchange");
         for (int i = 0; i < interchanges.length(); i++) {
