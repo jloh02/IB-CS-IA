@@ -15,20 +15,27 @@ import static java.lang.Math.*;
 
 class SGRouter {
     final static ArrayList<Route> outputPaths = new ArrayList<>();
-    static Map<String, ArrayList<Edge>> a = new HashMap<>();
-    static Map<String, Double> mrtStopTime = new HashMap<>();
+    static Map<String, ArrayList<Edge>> a = new HashMap<>(); //Adjacency List
+    static Map<String, Double> mrtStopTime = new HashMap<>(); //MRT Stop Time
     private static Map<String, ArrayList<Double>> busFreq = new HashMap<>();
     private static Map<String, ArrayList<Double>> mrtFreq = new HashMap<>();
     private static Set<String> nodes = new HashSet<>();
     private static JSONObject jObj;
 
     SGRouter() {
+        //Read file using org.json package
         try {
             long startParse = System.nanoTime();
             try {
-                jObj = new JSONObject(new String(Thread.currentThread().getContextClassLoader().getResourceAsStream("SGPublicTransportData.json").readAllBytes(), StandardCharsets.UTF_8));
+                jObj = new JSONObject(new String(
+                        Thread.currentThread().getContextClassLoader()
+                                .getResourceAsStream(
+                                        "SGPublicTransportData.json")
+                                .readAllBytes(), StandardCharsets.UTF_8));
                 long fileParseTime = System.nanoTime();
-                System.out.println("Read File: " + (fileParseTime - startParse) / 1000000 + "ms");
+                System.out.println(
+                        "Read File: " + (fileParseTime - startParse) / 1000000 +
+                                "ms");
             } catch (IOException e) {
                 System.out.println("IO Exception");
                 System.out.println(e.toString());
@@ -39,38 +46,62 @@ class SGRouter {
         }
     }
 
+    //Get wait times by reading from maps
     static double getWaitTime(String service) {
         Calendar c = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
         int h = c.get(Calendar.HOUR_OF_DAY);
         int m = c.get(Calendar.MINUTE);
-        if (service.equals("walk"))
+        if (service.equals("walk")) {
             return 0;
-        else if (service.charAt(0) >= 'A' && service.charAt(0) <= 'z' && !service.contains("CT") && !service.contains("BPS")) {
+        } else if (Route.isMRT(service)) {
+            //Time checking to determine which slot of frequency to retrieve
+            // (AM_NONPEAK, AM_PEAK, PM_NONPEAK, PM_PEAK)
             service = service.substring(0, 2);
             if (c.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) {
-                if (h >= 12 && h <= 14) return mrtFreq.get(service).get(1);
-                if (h >= 18 && h <= 22) return mrtFreq.get(service).get(1);
+                if (h >= 12 && h <= 14) {
+                    return mrtFreq.get(service).get(1);
+                }
+                if (h >= 18 && h <= 22) {
+                    return mrtFreq.get(service).get(1);
+                }
                 return mrtFreq.get(service).get(0);
             }
-            if (h == 7 && m >= 30) return mrtFreq.get(service).get(1);
-            if (h == 8) return mrtFreq.get(service).get(1);
-            if (h == 9 && m <= 30) return mrtFreq.get(service).get(1);
-            if (h == 17 && m >= 30) return mrtFreq.get(service).get(1);
-            if (h == 18) return mrtFreq.get(service).get(1);
-            if (h == 19 && m <= 30) return mrtFreq.get(service).get(1);
+            if (h == 7 && m >= 30) {
+                return mrtFreq.get(service).get(1);
+            }
+            if (h == 8) {
+                return mrtFreq.get(service).get(1);
+            }
+            if (h == 9 && m <= 30) {
+                return mrtFreq.get(service).get(1);
+            }
+            if (h == 17 && m >= 30) {
+                return mrtFreq.get(service).get(1);
+            }
+            if (h == 18) {
+                return mrtFreq.get(service).get(1);
+            }
+            if (h == 19 && m <= 30) {
+                return mrtFreq.get(service).get(1);
+            }
             return mrtFreq.get(service).get(0);
         } else {
-            if (h <= 8 && m <= 30)
+            if (h <= 8 && m <= 30) {
                 return busFreq.get(service).get(0);
-            if (h < 17)
+            }
+            if (h < 17) {
                 return busFreq.get(service).get(1);
-            if (h < 19)
+            }
+            if (h < 19) {
                 return busFreq.get(service).get(2);
+            }
             return busFreq.get(service).get(3);
         }
     }
 
-    private static double calc_dist(double lon1, double lat1, double lon2, double lat2) {
+    //Haversine formula to calculate distance between coordinates
+    private static double calc_dist(double lon1, double lat1, double lon2,
+                                    double lat2) {
         lon1 = toRadians(lon1);
         lat1 = toRadians(lat1);
         lon2 = toRadians(lon2);
@@ -79,11 +110,12 @@ class SGRouter {
         double distLon = lon2 - lon1;
         double distLat = lat2 - lat1;
 
-        double di = sin(distLat / 2) * sin(distLat / 2) + cos(lat1) * cos(lat2) * sin(distLon / 2) * sin(distLon / 2);
+        double di = sin(distLat / 2) * sin(distLat / 2) +
+                cos(lat1) * cos(lat2) * sin(distLon / 2) * sin(distLon / 2);
         return 2 * asin(sqrt(di)) * 6378.1; //approx radius of earth (km)
     }
 
-
+    //Debug function to print routes
     private static ArrayList<String> routeToText() {
         ArrayList<String> routeString = new ArrayList<>();
         for (int i = 0; i < outputPaths.size(); i++) {
@@ -95,24 +127,36 @@ class SGRouter {
             for (int j = 0; j < p.size(); j++) {
                 if (!s.get(j).equals(prevServ)) {
                     String cmd = "Take " + prevServ + " ";
-                    if (prevServ.equals("walk"))
+                    if (prevServ.equals("walk")) {
                         cmd = "Walk ";
-                    routeString.set(i, routeString.get(i) + cmd + "to " + p.get(j - 1) + "\n");
+                    }
+                    routeString.set(i,
+                            routeString.get(i) + cmd + "to " + p.get(j - 1) +
+                                    "\n");
                     prevServ = s.get(j);
                 }
             }
-            if (prevServ.equals("walk"))
-                routeString.set(i, routeString.get(i) + "Walk to " + p.get(p.size() - 1) + "\nTotal time: "
-                        + Math.round(t.get(t.size() - 1)));
-            else
-                routeString.set(i, routeString.get(i) + "Take " + prevServ + " to " + p.get(p.size() - 1) + "\nTotal time: "
-                        + Math.round(t.get(t.size() - 1)));
+            if (prevServ.equals("walk")) {
+                routeString.set(i,
+                        routeString.get(i) + "Walk to " + p.get(p.size() - 1) +
+                                "\nTotal time: "
+                                + Math.round(t.get(t.size() - 1)));
+            } else {
+                routeString.set(i,
+                        routeString.get(i) + "Take " + prevServ + " to " +
+                                p.get(p.size() - 1) + "\nTotal time: "
+                                + Math.round(t.get(t.size() - 1)));
+            }
         }
         return routeString;
     }
 
-    private static boolean checkInService(String first, String last, Calendar now) {
-        if (first.equals("-") || last.equals("-")) return false;
+    //Check if service is available
+    private static boolean checkInService(String first, String last,
+                                          Calendar now) {
+        if (first.equals("-") || last.equals("-")) {
+            return false;
+        }
         Calendar start = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
         Calendar end = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
 
@@ -126,37 +170,59 @@ class SGRouter {
         end.set(Calendar.MILLISECOND, 0);
 
         if (end.before(start)) {
-            if (now.get(Calendar.HOUR_OF_DAY) <= 3) end.add(Calendar.DATE, -1);
-            else end.add(Calendar.DATE, 1);
+            if (now.get(Calendar.HOUR_OF_DAY) <= 3) {
+                end.add(Calendar.DATE, -1);
+            } else {
+                end.add(Calendar.DATE, 1);
+            }
         }
 
         return !(now.before(start) || now.after(end));
     }
 
-    private static void calculate(double startLat, double startLon, double endLat, double endLon, double maxWalkKm) {
-        long start = System.nanoTime();
+    static List<Route> route(double startLat, double startLon, double endLat,
+                             double endLon, double maxWalkKm) {
+        calculate(startLat, startLon, endLat, endLon, maxWalkKm);
+        if (outputPaths.size() > 3) {
+            return outputPaths.subList(0, 3);
+        }
+        return outputPaths;
+    }
 
+    //Dijkstra Driver
+    private static void calculate(double startLat, double startLon,
+                                  double endLat, double endLon,
+                                  double maxWalkKm) {
+        long start = System.nanoTime(); //Debug
+
+        //Arrays to store x,y coordinates, weights and services
         ArrayList<String> xStore = new ArrayList<>();
         ArrayList<String> yStore = new ArrayList<>();
         ArrayList<Double> wStore = new ArrayList<>();
         ArrayList<String> sStore = new ArrayList<>();
 
+        //Storage of nearby nodes to source and destination
+        //NodeDist is a placeholder object of Pair<String,double>
         ArrayList<NodeDist> nearbyStart = new ArrayList<>();
         ArrayList<NodeDist> nearbyEnd = new ArrayList<>();
 
+        //Clear map
         for (Map.Entry<String, ArrayList<Edge>> entry : a.entrySet())
             entry.getValue().clear();
 
+        //Get time of routing for checking available services
         Calendar c = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
 
+        //Parse JSON Adjacency Lists into ArrayList
         JSONObject busAdjList = jObj.getJSONObject("busAdjList");
         Iterator<String> it = busAdjList.keys();
 
         while (it.hasNext()) {
             String x = it.next();
-            nodes.add(x);
+            nodes.add(x);   //Add node to Set
 
-            JSONArray edgeList = busAdjList.getJSONObject(x).getJSONArray("edges");
+            JSONArray edgeList =
+                    busAdjList.getJSONObject(x).getJSONArray("edges");
             for (int i = 0; i < edgeList.length(); i++) {
                 JSONObject edge = edgeList.getJSONObject(i);
                 nodes.add(edge.getString("BusStopCode"));
@@ -183,21 +249,29 @@ class SGRouter {
                     sStore.add(edge.getString("Service"));
                 }
             }
+
+            //Add node to nearby nodes if within walking distance
             double lonNode = busAdjList.getJSONObject(x).getDouble("lon");
             double latNode = busAdjList.getJSONObject(x).getDouble("lat");
-            double distFromStart = calc_dist(lonNode, latNode, startLon, startLat);
-            if (abs(distFromStart) <= maxWalkKm) nearbyStart.add(new NodeDist(x, distFromStart));
+            double distFromStart =
+                    calc_dist(lonNode, latNode, startLon, startLat);
+            if (abs(distFromStart) <= maxWalkKm) {
+                nearbyStart.add(new NodeDist(x, distFromStart));
+            }
             double distFromEnd = calc_dist(lonNode, latNode, endLon, endLat);
-            if (abs(distFromEnd) <= maxWalkKm) nearbyEnd.add(new NodeDist(x, distFromEnd));
+            if (abs(distFromEnd) <= maxWalkKm) {
+                nearbyEnd.add(new NodeDist(x, distFromEnd));
+            }
         }
 
         JSONObject mrtAdjList = jObj.getJSONObject("mrtAdjList");
         Iterator<String> mrtIt = mrtAdjList.keys();
         while (mrtIt.hasNext()) {
             String x = mrtIt.next();
-            nodes.add(x);
+            nodes.add(x);   //Add node to Set
 
-            JSONArray edgeList = mrtAdjList.getJSONObject(x).getJSONArray("edges");
+            JSONArray edgeList =
+                    mrtAdjList.getJSONObject(x).getJSONArray("edges");
             for (int i = 0; i < edgeList.length(); i++) {
                 JSONObject edge = edgeList.getJSONObject(i);
                 nodes.add(edge.getString("Station"));
@@ -221,13 +295,22 @@ class SGRouter {
                     mrtStopTime.put(x, edge.getDouble("StopTime"));
                 }
             }
+
+            //Add node to nearby nodes if within walking distance
             double lonNode = mrtAdjList.getJSONObject(x).getDouble("lon");
             double latNode = mrtAdjList.getJSONObject(x).getDouble("lat");
-            double distFromStart = calc_dist(lonNode, latNode, startLon, startLat);
-            if (abs(distFromStart) <= maxWalkKm) nearbyStart.add(new NodeDist(x, distFromStart));
+            double distFromStart =
+                    calc_dist(lonNode, latNode, startLon, startLat);
+            if (abs(distFromStart) <= maxWalkKm) {
+                nearbyStart.add(new NodeDist(x, distFromStart));
+            }
             double distFromEnd = calc_dist(lonNode, latNode, endLon, endLat);
-            if (abs(distFromEnd) <= maxWalkKm) nearbyEnd.add(new NodeDist(x, distFromEnd));
+            if (abs(distFromEnd) <= maxWalkKm) {
+                nearbyEnd.add(new NodeDist(x, distFromEnd));
+            }
         }
+
+        //Add vertexes between different MRT lines with same stop
         JSONArray interchanges = jObj.getJSONArray("interchange");
         for (int i = 0; i < interchanges.length(); i++) {
             JSONArray ed = interchanges.getJSONArray(i);
@@ -242,6 +325,7 @@ class SGRouter {
             sStore.add("walk");
         }
 
+        //Create bus frequency map
         JSONObject busFreqMap = jObj.getJSONObject("busFreq");
         Iterator<String> busNums = busFreqMap.keys();
         while (busNums.hasNext()) {
@@ -254,6 +338,7 @@ class SGRouter {
             busFreq.put(bus, delays);
         }
 
+        //Create MRT frequency map
         JSONObject mrtFreqMap = jObj.getJSONObject("mrtFreq");
         Iterator<String> mrtLines = mrtFreqMap.keys();
         while (mrtLines.hasNext()) {
@@ -266,38 +351,52 @@ class SGRouter {
             mrtFreq.put(mrt, delays);
         }
 
+        //Debug printing
         long dataParseTime = System.nanoTime();
-        System.out.println("Process File: " + (dataParseTime - start) / 1000000 + "ms");
+        System.out.println(
+                "Process File: " + (dataParseTime - start) / 1000000 + "ms");
 
+        //Initialize map for all nodes in Set
         for (String temp : nodes) {
             a.put(temp, new ArrayList<>());
         }
 
-        for (int i = 0; i < xStore.size(); i++) { // Build graph
-            a.get(xStore.get(i)).add(new Edge(yStore.get(i), wStore.get(i), sStore.get(i)));
+        // Build adjacency list (graph)
+        for (int i = 0; i < xStore.size(); i++) {
+            a.get(xStore.get(i))
+                    .add(new Edge(yStore.get(i), wStore.get(i), sStore.get(i)));
         }
 
+        //Sort nearby nodes from source and destination by distance
         Collections.sort(nearbyStart, new nodeDistComparator());
         Collections.sort(nearbyEnd, new nodeDistComparator());
 
-        outputPaths.clear();
+        outputPaths.clear(); //Reset all paths
 
-        ExecutorService executor = Executors.newFixedThreadPool(2);
+        //Multithreaded handler
+        ExecutorService executor = Executors.newFixedThreadPool(4);
         int startUpperLimit = nearbyStart.size() > 5 ? 5 : nearbyStart.size();
         int endUpperLimit = nearbyEnd.size() > 5 ? 5 : nearbyEnd.size();
         for (int s = 0; s < startUpperLimit; s++) {
             for (int e = 0; e < endUpperLimit; e++) {
-                //System.out.println(nearbyStart.get(s).node + " " + nearbyEnd.get(e).node);
+                //System.out.println(nearbyStart.get(s).node + " " +
+                // nearbyEnd.get(e).node);
                 Map<String, Set<String>> tempNumPathToNode = new HashMap<>();
                 for (String temp : nodes) {
                     tempNumPathToNode.put(temp, new HashSet<>());
                 }
                 double startWalkTime = nearbyStart.get(s).dist / 5;
                 double lastWalkTime = nearbyEnd.get(e).dist / 5;
-                executor.execute(new Thread(new MultiThreadDijkstra(startWalkTime, lastWalkTime, nearbyStart.get(s).node, nearbyEnd.get(e).node, tempNumPathToNode)));
+                //Add a new thread execution instruction for each start and
+                // end node
+                executor.execute(new Thread(
+                        new MultiThreadDijkstra(startWalkTime, lastWalkTime,
+                                nearbyStart.get(s).node, nearbyEnd.get(e).node,
+                                tempNumPathToNode)));
             }
         }
 
+        //Wait for all threads to finish execution or 60s timeout
         executor.shutdown();
         synchronized (executor) {
             try {
@@ -309,16 +408,13 @@ class SGRouter {
         executor.shutdownNow();
 
         System.out.println(routeToText().toString());
-        System.out.println("Run Time: " + (System.nanoTime() - start) / 1000000000.0 + "s");
+        System.out.println(
+                "Run Time: " + (System.nanoTime() - start) / 1000000000.0 +
+                        "s");
     }
 
-    static List<Route> route(double startLat, double startLon, double endLat, double endLon, double maxWalkKm) {
-        calculate(startLat, startLon, endLat, endLon, maxWalkKm);
-        if (outputPaths.size() > 3) return outputPaths.subList(0, 3);
-        return outputPaths;
-    }
-
-    static ArrayList<BusStopDetails> getNearestBS(double startLat, double startLon) {
+    static ArrayList<BusStopDetails> getNearestBS(double startLat,
+                                                  double startLon) {
         JSONObject busAdjList = jObj.getJSONObject("busAdjList");
         Iterator<String> it = busAdjList.keys();
         ArrayList<BusStopDetails> dists = new ArrayList<>();
@@ -328,7 +424,11 @@ class SGRouter {
             double lat = busAdjList.getJSONObject(x).getDouble("lat");
             double lon = busAdjList.getJSONObject(x).getDouble("lon");
             double d = calc_dist(startLon, startLat, lon, lat);
-            if (d < 2.0) dists.add(new BusStopDetails(x,busAdjList.getJSONObject(x).getString("name"),busAdjList.getJSONObject(x).getString("road"),d));
+            if (d < 2.0) {
+                dists.add(new BusStopDetails(x,
+                        busAdjList.getJSONObject(x).getString("name"),
+                        busAdjList.getJSONObject(x).getString("road"), d));
+            }
 
         }
 
